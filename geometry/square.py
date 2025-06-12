@@ -1,5 +1,5 @@
-from .basics import Point
-from math import sqrt
+from .basics import Point, GetDistance
+from math import sqrt, isclose
 
 class Square:
 
@@ -13,30 +13,30 @@ class Square:
     
     if not self.check_validity():
       raise Exception(f"The points provided don't form a square. {self.points}")
-    self.length = sqrt(((self.A.x - self.B.x) ** 2) + (self.A.y - self.B.y) ** 2)
+    self.length = GetDistance.between_points(self.A, self.B)
     self.area = self.get_area()
 
   def get_area(self) -> float:
     return self.length ** 2
 
   def get_side_lengths(self) -> list:
-    AB: float = sqrt(((self.A.x - self.B.x) ** 2) + (self.A.y - self.B.y) ** 2)
-    BC: float = sqrt(((self.B.x - self.C.x) ** 2) + (self.B.y - self.C.y) ** 2)
-    CD: float = sqrt(((self.C.x - self.D.x) ** 2) + (self.C.y - self.D.y) ** 2)
-    AD: float = sqrt(((self.A.x - self.D.x) ** 2) + (self.A.y - self.D.y) ** 2)
+    AB: float = GetDistance.between_points(self.A, self.B)
+    BC: float = GetDistance.between_points(self.B, self.C)
+    CD: float = GetDistance.between_points(self.C, self.D)
+    AD: float = GetDistance.between_points(self.A, self.D)
     
     return [AB, BC, CD, AD]
 
   def check_validity(self) -> bool:
     [AB, BC, CD, AD] = self.get_side_lengths()
     
-    return AB == BC == CD == AD
+    return all(isclose(side, AB, rel_tol=1e-9) for side in [BC, CD, AD])
 
   def get_points(self) -> list:
-    A = f"{self.A.letter}({self.A.x}; {self.A.y})"
-    B = f"{self.B.letter}({self.B.x}; {self.B.y})"
-    C = f"{self.C.letter}({self.C.x}; {self.C.y})"
-    D = f"{self.D.letter}({self.D.x}; {self.D.y})"
+    A = self.A.format
+    B = self.B.format
+    C = self.C.format
+    D = self.D.format
     
     return [A, B, C, D]
 
