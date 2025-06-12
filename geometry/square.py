@@ -1,4 +1,4 @@
-from .basics import Point, GetDistance
+from .basics import Point, GetDistance, Areas, General
 from math import sqrt, isclose
 
 class Square:
@@ -13,11 +13,12 @@ class Square:
     
     if not self.check_validity():
       raise Exception(f"The points provided don't form a square. {self.points}")
-    self.length = GetDistance.between_points(self.A, self.B)
-    self.area = self.get_area()
-
-  def get_area(self) -> float:
-    return self.length ** 2
+    
+    self.lengths = self.get_side_lengths()
+    
+    self.perimeter = General.get_perimeter(self.lengths)
+    
+    self.area = Areas.Square.area(self.lengths[0])
 
   def get_side_lengths(self) -> list:
     AB: float = GetDistance.between_points(self.A, self.B)
@@ -41,5 +42,5 @@ class Square:
     return [A, B, C, D]
 
   def __str__(self) -> str:
-    res: str =f"SQUARE defined with corners {self.points}."
+    res: str = f"SQUARE defined with corners {self.points}."
     return res

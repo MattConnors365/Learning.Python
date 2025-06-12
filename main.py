@@ -1,5 +1,6 @@
 from geometry.basics import Point
 from geometry.square import Square
+from geometry.triangle import Triangle
 
 if __name__ == '__main__':
   A: Point = Point('A', 0, 0)
@@ -10,5 +11,12 @@ if __name__ == '__main__':
   sq = Square(A, B, C, D)
   print(sq.points)
   print(sq)
-  print(sq.length)
+  print(sq.lengths[0])
   print(sq.area)
+  
+  tr = Triangle(A, B, C)
+  print(tr)
+  print(tr.lengths)
+  print(tr.area)
+  print(tr.perimeter)
+  

@@ -1,4 +1,4 @@
-from math import sqrt
+from math import sqrt, fsum
 
 class Point:
   def __init__(self, letter: chr, x_coordinate: float, y_coordinate: float):
@@ -20,3 +20,26 @@ class GetDistance:
   @staticmethod
   def between_points(A: Point, B: Point) -> float:
     return sqrt(((A.x - B.x) ** 2) + (A.y - B.y) ** 2)
+  
+class General:
+  @staticmethod
+  def get_perimeter(arr: list):
+    return fsum(arr)
+  
+class Areas:
+  class Square:
+    @staticmethod
+    def area(length: float) -> float:
+      return length ** 2
+    
+  class Triangle:
+    @staticmethod
+    def Heron(lengths: list) -> float:
+      [a, b, c] = lengths
+      semi_perimeter: float = (a + b + c) / 2
+      p = semi_perimeter
+      return sqrt(p * (p - a) * (p - b) * (p - c))
+    
+    @staticmethod
+    def RightTriangle(leg1: float, leg2: float) -> float:
+      return (leg1 * leg2) / 2
