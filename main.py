@@ -1,6 +1,7 @@
 from geometry.basics import Point
 from geometry.square import Square
 from geometry.triangle import Triangle
+from geometry.circle import Circle
 
 if __name__ == '__main__':
   A: Point = Point('A', 0, 0)
@@ -20,3 +21,9 @@ if __name__ == '__main__':
   print(tr.area)
   print(tr.perimeter)
   
+  cr = Circle(A, 5)
+  print(cr)
+  print(cr.radius)
+  print(cr.area)
+  print(cr.center)
+  print(cr.circumference)

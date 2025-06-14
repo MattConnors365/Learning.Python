@@ -1,4 +1,4 @@
-from math import sqrt, fsum
+from math import sqrt, fsum, pi
 
 class Point:
   def __init__(self, letter: chr, x_coordinate: float, y_coordinate: float):
@@ -43,3 +43,8 @@ class Areas:
     @staticmethod
     def RightTriangle(leg1: float, leg2: float) -> float:
       return (leg1 * leg2) / 2
+
+  class Circle:
+    @staticmethod
+    def area(radius: float) -> float:
+      return pi * radius ** 2
