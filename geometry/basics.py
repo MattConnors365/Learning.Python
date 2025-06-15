@@ -1,3 +1,4 @@
+from .line import Line
 from math import sqrt, fsum, pi
 
 class Point:
@@ -46,6 +47,10 @@ class GetDistance:
   def between_points(A: Point, B: Point) -> float:
     return sqrt(((A.x - B.x) ** 2) + (A.y - B.y) ** 2)
   
+  @staticmethod
+  def point_to_line(P: Point, L: Line) -> float:
+    return abs(L.a * P.x + L.b * P.y + L.c) / sqrt(L.a ** 2 + L.b ** 2)
+
 class General:
   @staticmethod
   def get_perimeter(arr: list):

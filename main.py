@@ -2,6 +2,7 @@ from geometry.basics import Point
 from geometry.square import Square
 from geometry.triangle import Triangle
 from geometry.circle import Circle
+from geometry.line import Line
 
 if __name__ == '__main__':
   A: Point = Point('A', 0, 0)
@@ -27,3 +28,7 @@ if __name__ == '__main__':
   print(cr.area)
   print(cr.center)
   print(cr.circumference)
+
+  ln = Line.from_points(B, D)
+  print(ln)
+  print(ln.contains_point(B))
