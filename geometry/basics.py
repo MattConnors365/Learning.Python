@@ -24,6 +24,19 @@ class Point:
         self.x = x_coordinate
         self.y = y_coordinate
 
+    @classmethod
+    def MiddlePoint(cls, letter: chr, A: Point, B: Point) -> Point:
+        """Initializes a Point object with coordinates in the middle of points A and B.
+
+        Args:
+            letter (chr): The letter designation for the middle point.
+            A (Point): The first point.
+            B (Point): The second point.
+        """
+        x: float = (A.x + B.x) / 2
+        y: float = (A.y + B.y) / 2
+        return cls(letter, x, y)
+
     def __str__(self) -> str:
         """Returns a string representation of the Point.
 
@@ -94,26 +107,6 @@ class Point:
             str: A string like "A(0; 0)".
         """
         return f"{self.letter}({self.x}; {self.y})"
-
-
-class MiddlePoint(Point):
-    """Represents the midpoint between two other Point objects.
-
-    This class inherits from Point and automatically calculates its coordinates
-    based on two input points.
-    """
-
-    def __init__(self, letter: chr, A: Point, B: Point):
-        """Initializes a MiddlePoint object.
-
-        Args:
-            letter (chr): The letter designation for the middle point.
-            A (Point): The first point.
-            B (Point): The second point.
-        """
-        super().__init__(letter, 0, 0)
-        self.x = (A.x + B.x) / 2
-        self.y = (A.y + B.y) / 2
 
 
 class GetDistance:
